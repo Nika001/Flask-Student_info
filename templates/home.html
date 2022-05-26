@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table, th, td {
+          border:1px solid black; margin-top: 70px;
+        }
+    </style>
+    <title>Home</title>
+</head>
+<body>
+    <center><h1>Students</h1></center> 
+    <form method="POST" action="/">
+      <input type="text" placeholder="Name" name="name" required="" size="50px" style="margin-top: 60px; margin-left: 230px; border-color: #adf6f2;">
+      <input type="text" placeholder="Surname" name="surname" required="" size = "50px" style="margin-top: 25px; margin-left: 110px; border-color: #adf6f2;">
+      <input type="submit" value="ADD STUDENT" name = "action" style="background-color: #adf6f2; margin-top: 20px; margin-left: 600px; border-radius:50px; height: 40px;letter-spacing: 3px;font:bold;">
+    </form>
+
+    <table style="width: 70%; margin-left: 200px;">
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Math</th>
+          <th>History</th>
+          <th>html</th>
+          <th>Average</th>
+        </tr>
+        {% for i in data %}
+          <tr>
+            <td>{{ i[0] }}</td>
+            <td>{{ i[1] }}</td>
+            <td>{{ i[2] }}</td>
+            <td>{{ i[3] }}</td>
+            <td>{{ i[4] }}</td>
+            <td>{{ i[5] }}</td>
+            <td>{{ (i[3] + i[4] + i[5])//3 }}</td>
+            <td>
+              <center>
+                <form action="/edit" method="post">
+                  <input type="hidden" name="student_id" value={{ i[0] }}>
+                  <input type="submit"  value="EDIT" name = "action" style="background-color: #adf6f2; border-radius:50px; height: 20px;letter-spacing: 3px;font:bold;">
+                </form>
+              </center>
+            </td>
+            <td>
+              <center>
+                <form action="/delete" method="post">
+                  <input type="hidden" value={{ i[0] }} name = "student_id">
+                  <input type="submit" value="DELETE" name = "action" style="background-color:red; border-radius:50px; height: 20px;letter-spacing: 3px;font:bold;">
+                </form>
+              </center>
+            </td> 
+          </tr>
+        {% endfor %}
+      </table>
+</body>
+</html>

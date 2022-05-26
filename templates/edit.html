@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        table, th, td {
+          border:1px solid black; margin-top: 70px;
+        }
+    </style>
+    <title>Student Update</title>
+</head>
+<body>
+      <table style="width: 70%; margin-left: 150px;">
+        <h1 style="margin-left: 550px; margin-top: 50px;">Student Update</h1>
+        <tr>
+          <th>ID</th>
+          <th>First Name</th>
+          <th>Last Name</th>
+          <th>Math</th>
+          <th>History</th>
+          <th>html</th>
+          <tr>
+              <form action={{ url_for('main') }} method="post">
+                  <td><input type="number" name="stud_id" value={{ data[0][0] }} readonly></td>
+                  <td><input type="text" value={{ data[0][1] }} name="name" required=""></td>
+                  <td><input type="text" value={{ data[0][2] }} name="surname" required=""></td>
+                  <td><input type="text" value={{ data[0][3] }} name="math" required=""></td>
+                  <td><input type="text" value={{ data[0][4] }} name="history" required=""></td>
+                  <td><input type="text" value={{ data[0][5] }} name="html" required=""></td>
+                  <input type="submit"  value="UPDATE" name = "action" style="background-color: #adf6f2; border-radius:50px; height: 30px;letter-spacing: 3px;font:bold;margin-top: 50px; margin-left: 550px;">          
+                </form>
+                <form action={{ url_for("main") }} method="post">
+                    <input type="submit" value="BACK" name = "action" style="background-color:#adf6f2; border-radius:50px; height: 30px;letter-spacing: 3px;font:bold; margin-top: 50px; margin-left: 50px;">
+                </form>
+            </tr>  
+      </table>
+        
+</body>
+</html>
